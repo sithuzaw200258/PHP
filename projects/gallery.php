@@ -49,7 +49,15 @@ $photos = array_filter(scandir("./images"), fn($el) => $el != "." && $el != ".."
 <section>
     <div class="grid grid-cols-4 gap-4  mt-5">
         <?php foreach ($photos as $photo) : ?>
-            <img src="./images/<?= $photo ?>" alt="Image" class="rounded">
+            <div class="inline-block relative group">
+                <img src="./images/<?= $photo ?>" alt="Image" class="rounded w-full h-auto object-cover object-center">
+                <a onclick="return confirm('Are you sure?')" href="./gallery-delete.php?file_name=<?= $photo ?>" class="hidden absolute -right-3 -top-3 py-1 px-2  items-center duration-300 gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-red-100 text-red-800 hover:bg-red-200 group-hover:inline-flex focus:outline-none focus:bg-red-200 disabled:opacity-50 disabled:pointer-events-none dark:text-red-500 dark:bg-red-800/30 dark:hover:bg-red-800/20 dark:focus:bg-red-800/20">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+
+                </a>
+            </div>
         <?php endforeach; ?>
     </div>
 </section>
